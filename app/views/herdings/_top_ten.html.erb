@@ -1,0 +1,32 @@
+<div class="container">
+    <table class="table table-dark text-center">
+      <thead>
+        <tr>
+          <th scope="col">Výsledné pořadí</th>
+          <th scope="col">Jméno</th>
+          <th scope="col">Datum narození</th>
+          <th scope="col">Majitel</th>
+          <th scope="col">Počet získaných bodů v soutěži</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @top_10_dogs_dictionary.each_with_index do |(key, value), index| %>
+          <% dog = Dog.find(key) %>
+          <%if logged_in? && dog.owner_id == current_owner.id %>
+            <tr class="table-secondary">
+            <%else %>
+            <tr>
+            <% end %>
+            <td> <%= index+1%>. </td>
+            <td><%= dog.dog_name %> </td>
+            <td><%= dog.date_of_birth.strftime("%d.%m.%Y") %></td>
+            <td><%= dog.owner.first_name %> <%= dog.owner.last_name %> </td>
+            <td> <%= value %></td>
+            <td> <%= link_to "Detaily", dog_path(dog), method: :get, class: "btn btn-success" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  

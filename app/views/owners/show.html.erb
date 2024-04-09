@@ -1,0 +1,6 @@
+<% if logged_in? && current_owner.id == @owner.id %>
+    <%= render partial: "owner"%>
+<% else %>
+    <%= render partial: "others"%>
+<% end %>
+

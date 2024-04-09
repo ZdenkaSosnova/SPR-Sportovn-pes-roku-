@@ -1,0 +1,51 @@
+<div class="container text-center">
+    <h2>Stránka psa <%= @dog.dog_name%></h2>
+    
+    
+</div>
+<% results = Herding.where(dog_id: @dog.id) %>
+
+<% if results.present? && !results.empty? %>
+<div class="container">   
+    <h3>Pasení</h3> 
+
+    <div class="container">
+        <table class="table table-dark text-center">
+            <thead>
+            <tr>
+                <th scope="col">Kategorie</th>
+                <th scope="col">Místo konání akce</th>
+                <th scope="col">Datum konání akce</th>
+                <th scope="col">Počet bodů</th>
+                <th scope="col">Pořadí</th>
+                <th scope="col">Počet soupeřů</th>
+                <th scope="col">Body do SPR</th>
+                <th scope="col" colspan="2"></th>
+            </tr>
+            </thead>
+            <tbody>
+                
+            <%results.each do |r| %>
+            <tr>
+                <td><%= r.category %> </td>
+                <td><%= r.event_place %> </td>
+                <td><%= r.event_date.strftime("%d.%m.%Y") %> </td>
+                <td><%= r.points %> </td>
+                <td><%= r.position %> </td>
+                <td><%= r.num_dogs %> </td>
+                <td><%= r.final_points %></td>
+                <td><%= link_to "Upravit výsledek", edit_herding_path(r), method: :get, class: "btn btn-success" %>
+                    <%= link_to "Smazat výsledek", herding_path(r), method: :delete, class: "btn btn-danger delete-link", data: { turbo_method: :delete, confirm: "Chcete tento výsledek vymazat?" } %>
+                </td>
+            </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+<% end %>
+<div class="container">
+    <%= link_to "Přídat nový výsledek", new_herding_path(dog_id: @dog.id), method: :get, class: "btn btn-success" %>
+<%= link_to "Zpět na Váš účet", owner_path(@dog.owner_id), method: :get, class: "btn btn-success" %>
+</div>

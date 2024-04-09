@@ -1,0 +1,64 @@
+@import "bootstrap";
+
+.card {
+    margin-top: 5px;
+}
+
+
+.hidden-link {
+    color: white;
+    text-decoration: none;
+  }
+
+  .jumbotron {
+    background-image: url("ovecky.jpg");
+    background-size: 100%;
+    background-color: rgba(69, 70, 70, 0.5); /* Background color with opacity */
+    background-blend-mode: overlay; /* Optional: blend mode for background image */
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    height: 700px;
+    margin-bottom: 50px;
+    align-self: center;
+}
+
+.container {
+    text-align: center;
+}
+
+.container {
+    margin: 20px auto 0; /* Center the table horizontally and add top margin */
+}
+
+
+.navbar-brand {
+    margin-left: 20px;
+}
+
+ul {
+    list-style-type: none;
+  }
+  
+.hidden {
+    display: none;
+  }
+
+.highlight {
+    color: #FFFAF0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

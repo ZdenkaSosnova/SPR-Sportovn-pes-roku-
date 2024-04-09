@@ -1,0 +1,27 @@
+<div class="container">
+    <table class="table table-dark text-center">
+        <thead>
+          <tr>
+            <th scope="col">Jméno</th>
+            <th scope="col">Email</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <%@members.each do |member| %>
+          <tr>
+            <td><%= "#{member.first_name} #{member.last_name}"%> </td>
+            <td><%= member.email %> </td>
+                <% owner = Owner.find_by(first_name: member.first_name, last_name: member.last_name)%>
+                <td>
+                <% if owner%>
+                <%= button_to "Show details", owner_path(owner), method: :get, class: "btn btn-success" %>
+                <% elsif !logged_in? %>
+                  <%= link_to "Registrovat se", signup_path(first_name: member.first_name, last_name: member.last_name, email: member.email), method: :get, class: "btn btn-secondary" %>
+                  <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>

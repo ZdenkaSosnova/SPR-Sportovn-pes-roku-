@@ -1,0 +1,15 @@
+<div class="container">
+    <%= form_with(model: @dog, local: true) do |f| %>
+      <div class="mb-3">
+        <%= f.label :dog_name, "Jméno psa", class: "form-label" %>
+        <%= f.text_field :dog_name, placeholder: "Jméno psa", class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :date_of_birth, "Datum narození", class: "form-label" %>
+        <%= f.date_field :date_of_birth, class: "form-control", id: "event_date_picker" %>
+      </div>      
+      <div class="field" id="points-field">
+      <div class="mb-3">
+        <%= f.submit method,class: "btn btn-warning" %>
+      </div>
+    <% end %>

@@ -1,0 +1,23 @@
+<div class="container">
+    <%= form_with(model: @owner, local: true) do |f| %>
+      <div class="mb-3">
+        <%= f.label :first_name, "Křestní jméno", class: "form-label" %>
+        <%= f.text_field :first_name, class: "form-control", placeholder: "Křestní jméno" , value: params[:first_name]%>
+      </div>
+      <div class="mb-3">
+        <%= f.label :last_name, "Příjmení", class: "form-label" %>
+        <%= f.text_field :last_name, class: "form-control", placeholder: "Příjmení", value: params[:last_name] %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :email,"Email", class: "form-label" %>
+        <%= f.text_field :email, class: "form-control", placeholder: "Email", value: params[:email]%>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password,"Heslo", class: "form-label" %>
+        <%= f.password_field :password, class: "form-control", placeholder: "Heslo" %>
+      </div>
+      <div class="mb-3">
+        <%= f.submit "Registrovat", class: "btn btn-warning" %>
+      </div>
+    <% end %>
+</div>

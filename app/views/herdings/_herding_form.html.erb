@@ -1,0 +1,40 @@
+<div class="container">
+<%= form_with(model: @herding, local: true) do |f| %>
+<%= f.hidden_field :dog_id, value: @dog_id %>
+  <div class="form-group">
+    <%= f.label :category, "Kategorie" %>
+    <%= f.select :category, [["NHAT", "NHAT"], ["HWT", "HWT"], ["IHT1", "IHT1"],["IHT2", "IHT2"],["IHT3", "IHT3"]], {}, id: "herding_category" %>
+  </div>
+  <div class="from-group">
+    <%= f.label :event_place, "Místo konání",class: "form-label" %>
+    <%= f.text_field :event_place, placeholder: "Místo konání",class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :event_date, "Datum konání", class: "form-label" %>
+    <%= f.date_field :event_date, class: "form-control" ,id: "event_date_picker" %>
+  </div>
+  
+  <div class="points-field" id="points-field">
+    <div class="form-group" style="margin-top: 10px;">
+    <%= f.label :points, "Počet získaných bodů" %>
+    <%= f.number_field :points, class: "form-control", placeholder: "Počet získaných bodů" %>
+  </div>
+  </div>
+  <div class="other-fields hidden">
+    <div class="form-group" style="margin-top: 10px;">
+      <%= f.label :position, "Pořadí",class: "form-label" %>
+      <%= f.number_field :position, class: "form-control", placeholder: 1 %>
+    </div>
+    <div class="form-group" style="margin-top: 10px;">
+      <%= f.label :num_dogs, "Počet soupeřů",class: "form-label" %>
+      <%= f.number_field :num_dogs, class: "form-control", placeholder: "Počet soupeřů" %>
+    </div>
+  </div>
+  <div class="form-group" style="margin-top: 10px;">
+  <%= f.submit action, class: "btn btn-warning" %>
+</div>
+    <% end %>
+</div>
+
+
+

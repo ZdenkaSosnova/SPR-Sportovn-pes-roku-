@@ -1,0 +1,10 @@
+<div class="container">
+    <% if obj.errors.any? %>
+        <h2> Prosím, opravte následující chyby pro uložení </h2>
+        <% obj.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger text-center" role="alert">
+            <%=  msg %>
+        </div>
+        <% end %>
+    <% end %>
+    </div>

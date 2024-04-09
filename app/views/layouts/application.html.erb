@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MemberApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'herding_form' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
+      <a class="navbar-brand" href="<%= about_path%>">Sportovní pes roku</a>
+      <button class="navbar-toggler" type="button" data-toggle='collapse' data-target="#navbarNav" aria-controls="
+       <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link active" aria-current="page" href="<%= root_path %>">Domovská stránka</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="<%= members_path %>">Seznam členů KCHCS</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+              Výsledky 
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="<%=herdings_path %>">Pasení</a></li>
+            </ul>
+          </li>
+          <% if logged_in? %>  
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<%= owner_path(current_owner) %>"><%= "#{current_owner.first_name} #{current_owner.last_name}" %></a>
+              </li>
+              <li class="nav-item">
+                <li class="nav-item">
+                  <%= link_to "Log out", logout_path, method: :delete, data: { turbo_method: :delete, "turbo-confirm": "Are you sure?" }, class: "nav-link active", style: "color: red;" %>
+              </li>
+          <% else %>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<%= login_path %>" style="color: white;">Přihlásit se</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<%= signup_path %>" style="color: white;">Registrovat se</a>
+                </li>
+          <%end %>
+          </ul>
+
+      </div>
+    </nav>
+    <div class="container">   
+      <% flash.each do |name, msg| %>
+    <div class="alert <%= bootstrap_class_for(name) %> alert-dismissible fade show" role="alert">
+    <%= msg %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% end %>
+
+    </div>
+    <%= yield %>
+  </body>
+</html>
