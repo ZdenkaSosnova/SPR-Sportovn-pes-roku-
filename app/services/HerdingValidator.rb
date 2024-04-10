@@ -50,15 +50,15 @@ class HerdingValidator
             elsif @herding.category == "IHT2"
                 @errors.add(:base, message: "Počet bodů v kategorii #{@herding.category} musí být mezi 84 a 120.") unless (84..120).include?(@herding.points)
             elsif @herding.category == "IHT3"
-                @errors.add(:base, message: "Počet bodů v kategorii #{@herding.category} musí být mezi 105 a 150.") unless (90..150).include?(@herding.points)
+                @errors.add(:base, message: "Počet bodů v kategorii #{@herding.category} musí být mezi 105 a 150.") unless (105..150).include?(@herding.points)
             end
         elsif @herding.event_date.present?
             if ["HWT", "IHT1"].include?(@herding.category)
-                @errors.add(:base, message: "Počet bodů v kategorii #{@herding.category} musí být mezi 70 a 100.") unless (60..100).include?(@herding.points)
+                @errors.add(:base, message: "Počet bodů v kategorii #{@herding.category} musí být mezi 60 a 100.") unless (60..100).include?(@herding.points)
             elsif @herding.category == "IHT2"
-                @errors.add(:base, message: "Počet bodů v kategorii #{@herding.category} musí být mezi 84 a 120.") unless (72..120).include?(@herding.points)
+                @errors.add(:base, message: "Počet bodů v kategorii #{@herding.category} musí být mezi 72 a 120.") unless (72..120).include?(@herding.points)
             elsif @herding.category == "IHT3"
-                @errors.add(:base, message: "Počet bodů v kategorii #{@herding.category} musí být mezi 105 a 150.") unless(105..150).include?(@herding.points)
+                @errors.add(:base, message: "Počet bodů v kategorii #{@herding.category} musí být mezi 90 a 150.") unless(90..150).include?(@herding.points)
             end
         end
     end
