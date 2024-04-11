@@ -3,7 +3,8 @@ class SessionsController < ApplicationController
     end
 
     def create
-        owner = Owner.find_by(email: params[:session][:email])
+        email = params[:session][:email].downcase
+        owner = Owner.find_by(email: email)
         if owner
           if owner.authenticate(params[:session][:password])
             session[:owner_id] = owner.id
